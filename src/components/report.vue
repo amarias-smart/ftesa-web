@@ -90,6 +90,11 @@ export default {
           label: "PLDT Number"
         },
         {
+          name: "FTNumber",
+          field: "FTNumber",
+          label: "FT Number"
+        },
+        {
           name: "AgentID",
           field: "AgentID",
           label: "Agent ID"
@@ -124,6 +129,17 @@ export default {
           align: "center"
         },
         {
+          name: "CSAT",
+          field: "CSAT",
+          label: "CSAT",
+          align: "center"
+        },
+        {
+          name: "Tel/PLNumber",
+          field: "Tel/PLNumber",
+          label: "Tel/PLNumber"
+        },
+        {
           name: "WrapUp",
           field: "WrapUp",
           label: "WraUp"
@@ -145,6 +161,18 @@ export default {
           field: "With Open FT",
           label: "With Open FT",
           align: "center"
+        },
+        {
+          name: "Relation",
+          field: "Relation",
+          label: "Relation",
+          align: "left"
+        },
+        {
+          name: "Date Open",
+          field: "Date Open",
+          label: "Date Open",
+          format: val => date.formatDate(val, "MM/DD/YYYY HH:mm:ss")
         }
       ]
     };
