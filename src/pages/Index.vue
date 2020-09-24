@@ -3,19 +3,19 @@
     <div class="row justify-center q-col-gutter-sm">
       <div class="col-md-4">
         <q-card>
-          <CHART :dataList="minWithOpenFT" />
+          <CHART :dataList="minWithOpenFT" title="MIN With Open FT:" />
         </q-card>
       </div>
 
       <div class="col-md-4">
         <q-card>
-          <q-card-section>asd</q-card-section>
+          <CHART :dataList="ftReviews" title="FT Reviews:" />
         </q-card>
       </div>
 
       <div class="col-md-4">
         <q-card>
-          <q-card-section>{{ ftWithOpenFT }}</q-card-section>
+          <CHART :dataList="ftWithOpenFT" title="FT With Open FT:" />
         </q-card>
       </div>
 
@@ -30,7 +30,7 @@
 export default {
   name: "PageIndex",
   components: {
-    CHART: () => import("components/g2Chart"),
+    CHART: () => import("components/amCharts"),
     REPORT: () => import("components/report")
   },
 
@@ -64,6 +64,22 @@ export default {
         .length;
       let noData = this.dataList.filter(f => f["FT With Open FT"] === "No")
         .length;
+
+      return [
+        {
+          type: "YES",
+          value: yesData
+        },
+        {
+          type: "NO",
+          value: noData
+        }
+      ];
+    },
+
+    ftReviews() {
+      let yesData = this.dataList.filter(f => f["FT Review"] === "Yes").length;
+      let noData = this.dataList.filter(f => f["FT Review"] === "No").length;
 
       return [
         {

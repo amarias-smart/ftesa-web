@@ -10,6 +10,7 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
+    "@amcharts/amcharts4": "^4.10.4",
     "@antv/g2": "^4.0.15",
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
