@@ -1,8 +1,8 @@
 <template>
   <q-card>
     <q-table
+      flat
       dense
-      class="overflow-auto"
       style="max-height: 400px;"
       :title="asOf"
       ref="table"
@@ -90,11 +90,6 @@ export default {
           label: "PLDT Number"
         },
         {
-          name: "FTNumber",
-          field: "FTNumber",
-          label: "FT Number"
-        },
-        {
           name: "AgentID",
           field: "AgentID",
           label: "Agent ID"
@@ -135,11 +130,6 @@ export default {
           align: "center"
         },
         {
-          name: "Tel/PLNumber",
-          field: "Tel/PLNumber",
-          label: "Tel/PLNumber"
-        },
-        {
           name: "WrapUp",
           field: "WrapUp",
           label: "WraUp"
@@ -151,28 +141,76 @@ export default {
           align: "left"
         },
         {
-          name: "API_Response",
-          field: "API_Response",
-          label: "API Response",
+          name: "FTNumber",
+          field: "FTNumber",
+          label: "FTNumber"
+        },
+        {
+          name: "Tel/PLNumber",
+          field: "Tel/PLNumber",
+          label: "Tel/PLNumber"
+        },
+        {
+          name: "FT Review",
+          field: "FT Review",
+          label: "FT Review",
           align: "center"
         },
         {
-          name: "With Open FT",
-          field: "With Open FT",
-          label: "With Open FT",
-          align: "center"
+          name: "MIN With Open FT",
+          field: "MIN With Open FT",
+          label: "MIN: With Open FT",
+          align: "center",
+          headerClasses: "bg-blue-2",
+          classes: "bg-blue-1"
         },
         {
-          name: "Relation",
-          field: "Relation",
-          label: "Relation",
-          align: "left"
+          name: "FT For",
+          field: "FT For",
+          label: "MIN: FT For",
+          align: "center",
+          headerClasses: "bg-blue-2",
+          classes: "bg-blue-1"
         },
         {
-          name: "Date Open",
-          field: "Date Open",
-          label: "Date Open",
-          format: val => date.formatDate(val, "MM/DD/YYYY HH:mm:ss")
+          name: "MIN Relation",
+          field: "MIN Relation",
+          label: "MIN: Relation",
+          align: "center",
+          headerClasses: "bg-blue-2",
+          classes: "bg-blue-1"
+        },
+        {
+          name: "MIN Date Opened",
+          field: "MIN Date Opened",
+          label: "MIN: Date Opened",
+          format: val => date.formatDate(val, "MM/DD/YYYY HH:mm:ss"),
+          headerClasses: "bg-blue-2",
+          classes: "bg-blue-1"
+        },
+        {
+          name: "FT With Open FT",
+          field: "FT With Open FT",
+          label: "FT: With Open FT",
+          align: "center",
+          headerClasses: "bg-yellow-2",
+          classes: "bg-yellow-1"
+        },
+        {
+          name: "FT Relation",
+          field: "FT Relation",
+          label: "FT: Relation",
+          align: "center",
+          headerClasses: "bg-yellow-2",
+          classes: "bg-yellow-1"
+        },
+        {
+          name: "FT Date Opened",
+          field: "FT Date Opened",
+          label: "FT: Date Opened",
+          format: val => date.formatDate(val, "MM/DD/YYYY HH:mm:ss"),
+          headerClasses: "bg-yellow-2",
+          classes: "bg-yellow-1"
         }
       ]
     };
