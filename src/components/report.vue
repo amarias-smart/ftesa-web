@@ -3,7 +3,7 @@
     <q-table
       flat
       dense
-      style="max-height: 400px;"
+      class="max_height"
       :title="asOf"
       ref="table"
       separator="cell"
@@ -243,3 +243,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.max_height {
+  max-height: 70vh;
+}
+</style>

@@ -1,25 +1,25 @@
 <template>
   <q-page padding>
     <div class="row justify-center q-col-gutter-sm">
-      <div class="col-md-4">
+      <div class="col-12 col-md-4">
         <q-card>
           <CHART :dataList="minWithOpenFT" title="MIN With Open FT:" />
         </q-card>
       </div>
 
-      <div class="col-md-4">
-        <q-card>
-          <CHART :dataList="ftReviews" title="FT Reviews:" />
-        </q-card>
-      </div>
-
-      <div class="col-md-4">
+      <div class="col-12 col-md-4">
         <q-card>
           <CHART :dataList="ftWithOpenFT" title="FT With Open FT:" />
         </q-card>
       </div>
 
-      <div class="col-md-12">
+      <div class="col-12 col-md-4">
+        <q-card>
+          <CHART :dataList="ftReviews" title="FT Reviews:" />
+        </q-card>
+      </div>
+
+      <div class="col-12">
         <REPORT :dataList="dataList" />
       </div>
     </div>
