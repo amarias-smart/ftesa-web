@@ -3,7 +3,7 @@
     <div class="row justify-center q-col-gutter-sm">
       <div class="col-md-4">
         <q-card>
-          <q-card-section>{{ apiResponseCount }}</q-card-section>
+          <CHART :dataList="minWithOpenFT" />
         </q-card>
       </div>
 
@@ -15,7 +15,7 @@
 
       <div class="col-md-4">
         <q-card>
-          <q-card-section>{{ withOpenFTCount }}</q-card-section>
+          <q-card-section>{{ ftWithOpenFT }}</q-card-section>
         </q-card>
       </div>
 
@@ -30,6 +30,7 @@
 export default {
   name: "PageIndex",
   components: {
+    CHART: () => import("components/g2Chart"),
     REPORT: () => import("components/report")
   },
 
@@ -40,26 +41,40 @@ export default {
   },
 
   computed: {
-    apiResponseCount() {
-      let yesData = this.dataList.filter(f => f["API_Response"] === "Yes")
+    minWithOpenFT() {
+      let yesData = this.dataList.filter(f => f["MIN With Open FT"] === "Yes")
         .length;
-      let noData = this.dataList.filter(f => f["API_Response"] === "No").length;
+      let noData = this.dataList.filter(f => f["MIN With Open FT"] === "No")
+        .length;
 
-      return {
-        yes: yesData,
-        no: noData
-      };
+      return [
+        {
+          type: "YES",
+          value: yesData
+        },
+        {
+          type: "NO",
+          value: noData
+        }
+      ];
     },
 
-    withOpenFTCount() {
-      let yesData = this.dataList.filter(f => f["With Open FT"] === "Yes")
+    ftWithOpenFT() {
+      let yesData = this.dataList.filter(f => f["FT With Open FT"] === "Yes")
         .length;
-      let noData = this.dataList.filter(f => f["With Open FT"] === "No").length;
+      let noData = this.dataList.filter(f => f["FT With Open FT"] === "No")
+        .length;
 
-      return {
-        yes: yesData,
-        no: noData
-      };
+      return [
+        {
+          type: "YES",
+          value: yesData
+        },
+        {
+          type: "NO",
+          value: noData
+        }
+      ];
     }
   },
 

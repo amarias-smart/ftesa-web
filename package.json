@@ -13,11 +13,13 @@
     "@antv/g2": "^4.0.15",
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
+    "chart.js": "^2.9.3",
     "core-js": "^3.6.5",
     "jsonata": "^1.8.3",
     "lodash": "^4.17.20",
     "papaparse": "^5.3.0",
-    "quasar": "^1.0.0"
+    "quasar": "^1.0.0",
+    "vue-chartjs": "^3.5.1"
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",
