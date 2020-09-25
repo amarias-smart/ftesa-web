@@ -3,7 +3,7 @@
     <q-table
       flat
       dense
-      class="max_height"
+      class="max_height bg-grey-2"
       :title="asOf"
       ref="table"
       separator="cell"

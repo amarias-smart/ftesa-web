@@ -47,6 +47,9 @@ export default {
   },
   mounted() {
     this.initChart();
+  },
+  beforeDestroy() {
+    am4core.options.autoDispose = true;
   }
 };
 </script>

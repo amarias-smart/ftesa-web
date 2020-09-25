@@ -2,19 +2,19 @@
   <q-page padding>
     <div class="row justify-center q-col-gutter-sm">
       <div class="col-12 col-md-4">
-        <q-card>
+        <q-card class="bg_dull_2left">
           <CHART :dataList="minWithOpenFT" title="MIN With Open FT:" />
         </q-card>
       </div>
 
       <div class="col-12 col-md-4">
-        <q-card>
+        <q-card class="bg_dull_2mid">
           <CHART :dataList="ftWithOpenFT" title="FT With Open FT:" />
         </q-card>
       </div>
 
       <div class="col-12 col-md-4">
-        <q-card>
+        <q-card class="bg_dull_2right">
           <CHART :dataList="ftReviews" title="FT Reviews:" />
         </q-card>
       </div>
@@ -95,9 +95,36 @@ export default {
   },
 
   created() {
-    this.$axios.get("api/dailyreport").then(r => {
-      this.dataList = r.data;
+    const _this = this;
+    _this.$q.loading.show();
+
+    _this.$axios.get("api/dailyreport").then(r => {
+      _this.dataList = r.data;
+
+      setTimeout(() => {
+        _this.$q.loading.hide();
+      }, 1200);
     });
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.bg_dull_2left {
+  background: #c9d6ff;
+  background: -webkit-linear-gradient(to left, #e2e2e2, #c9d6ff);
+  background: linear-gradient(to left, #e2e2e2, #c9d6ff);
+}
+
+.bg_dull_2mid {
+  background: #c9d6ff;
+  background: -webkit-linear-gradient(to top, #e2e2e2, #e2e2e2);
+  background: linear-gradient(to top, #e2e2e2, #e2e2e2);
+}
+
+.bg_dull_2right {
+  background: #c9d6ff;
+  background: -webkit-linear-gradient(to right, #e2e2e2, #c9d6ff);
+  background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+}
+</style>

@@ -40,7 +40,7 @@ module.exports = function(/* ctx */) {
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
       vueRouterMode: "history", // available values: 'hash', 'history'
-      publicPath: "/ft-esa/",
+      publicPath: "/",
 
       // transpile: false,
 
@@ -101,7 +101,7 @@ module.exports = function(/* ctx */) {
       // directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: ["Loading"]
     },
 
     // animations: 'all', // --- includes all animations
