@@ -14,6 +14,7 @@
       :pagination.sync="pagination"
       :rows-per-page-options="[0]"
       virtual-scroll
+      table-header-class="bg-grey-4"
     >
       <template v-slot:top-right>
         <q-input

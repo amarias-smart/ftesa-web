@@ -111,20 +111,20 @@ export default {
 
 <style lang="scss" scoped>
 .bg_dull_2left {
-  background: #c9d6ff;
-  background: -webkit-linear-gradient(to left, #e2e2e2, #c9d6ff);
-  background: linear-gradient(to left, #e2e2e2, #c9d6ff);
+  background: #e9e4f0;
+  background: -webkit-linear-gradient(to left, #e0eafc, #e0eafc);
+  background: linear-gradient(to left, #e0eafc, #e9e4f0);
 }
 
 .bg_dull_2mid {
-  background: #c9d6ff;
-  background: -webkit-linear-gradient(to top, #e2e2e2, #e2e2e2);
-  background: linear-gradient(to top, #e2e2e2, #e2e2e2);
+  background: #e9e4f0;
+  background: -webkit-linear-gradient(to top, #e0eafc, #e0eafc);
+  background: linear-gradient(to top, #e0eafc, #e0eafc);
 }
 
 .bg_dull_2right {
-  background: #c9d6ff;
-  background: -webkit-linear-gradient(to right, #e2e2e2, #c9d6ff);
-  background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+  background: #e9e4f0;
+  background: -webkit-linear-gradient(to right, #e0eafc, #e9e4f0);
+  background: linear-gradient(to right, #e0eafc, #e9e4f0);
 }
 </style>
