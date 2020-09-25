@@ -233,7 +233,10 @@ export default {
     csvExport() {
       let timestamp = date.formatDate(new Date(), "MMDDYY-HHMMSS");
       let data = this.$refs.table.filteredSortedRows.map(el => {
-        el.Date = date.formatDate(el.Date, "MM/DD/YYYY HH:mm:ss");
+        el["Date"] = date.formatDate(el.Date, "MM/DD/YYYY HH:mm:ss");
+        el["Call DateTime"] = date.formatDate(el.Date, "MM/DD/YYYY HH:mm:ss");
+        el["MIN Date Opened"] = date.formatDate(el.Date, "MM/DD/YYYY HH:mm:ss");
+        el["FT Date Opened"] = date.formatDate(el.Date, "MM/DD/YYYY HH:mm:ss");
 
         return el;
       });
