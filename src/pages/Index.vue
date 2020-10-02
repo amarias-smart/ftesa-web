@@ -1,38 +1,39 @@
 <template>
   <q-page padding>
     <div class="row justify-center q-col-gutter-sm items-stretch">
-      <div class="col-12 col-md-3">
-        <q-card class="bg_dull_2left fit flex flex-center">
+      <div class="col-12 col-md-4">
+        <q-card class="bg_dull_2left fit">
           <CHART :dataList="minWithOpenFT" title="MIN With Open FT:" />
         </q-card>
       </div>
 
-      <div class="col-12 col-md-3">
-        <q-card class="bg_dull_2mid fit flex flex-center">
+      <div class="col-12 col-md-4">
+        <q-card class="bg_dull_2mid fit">
           <CHART :dataList="ftWithOpenFT" title="FT With Open FT:" />
         </q-card>
       </div>
 
-      <div class="col-12 col-md-3">
-        <q-card class="bg_dull_2mid fit flex flex-center">
+      <div class="col-12 col-md-4">
+        <q-card class="bg_dull_2mid fit">
           <CHART :dataList="ftReviews" title="FT Reviews:" />
         </q-card>
       </div>
 
-      <div class="col-12 col-md-3">
+      <!-- <div class="col-12 col-md-3">
         <q-card>
           <q-date v-model="dateFilter" class="bg_dull_2right fit" minimal />
         </q-card>
-      </div>
+      </div> -->
 
       <div class="col-12">
-        <REPORT :dataList="dataList" />
+        <REPORT :dataList="dataList" @DateChange="reInitializeData" />
       </div>
     </div>
   </q-page>
 </template>
 
 <script>
+import { date } from "quasar";
 export default {
   name: "PageIndex",
   components: {
@@ -101,17 +102,29 @@ export default {
     }
   },
 
+  methods: {
+    initializeData(date) {
+      const _this = this;
+      _this.$q.loading.show();
+
+      _this.$axios.get(`api/dailyreport/?date=${date}`).then(r => {
+        _this.dataList = r.data;
+
+        setTimeout(() => {
+          _this.$q.loading.hide();
+        }, 1200);
+      });
+    },
+    reInitializeData(v) {
+      this.initializeData(v);
+    }
+  },
+
   created() {
-    const _this = this;
-    _this.$q.loading.show();
+    let prevDate = date.subtractFromDate(new Date(), { days: 1 });
+    let format = date.formatDate(prevDate, "YYYY/MM/DD");
 
-    _this.$axios.get("api/dailyreport").then(r => {
-      _this.dataList = r.data;
-
-      setTimeout(() => {
-        _this.$q.loading.hide();
-      }, 1200);
-    });
+    this.initializeData(format);
   }
 };
 </script>

@@ -250,6 +250,12 @@ export default {
     }
   },
 
+  watch: {
+    date(v) {
+      this.$emit("DateChange", v);
+    }
+  },
+
   methods: {
     setPrevDate() {
       let prevDate = date.subtractFromDate(new Date(), { days: 1 });
