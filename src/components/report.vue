@@ -17,23 +17,42 @@
       table-header-class="bg-grey-4"
     >
       <template v-slot:top-right>
+        <q-input outlined v-model="date" mask="date" dense>
+          <template v-slot:append>
+            <q-icon name="event" class="cursor-pointer">
+              <q-popup-proxy
+                ref="qDateProxy"
+                transition-show="scale"
+                transition-hide="scale"
+              >
+                <q-date v-model="date">
+                  <div class="row items-center justify-end">
+                    <q-btn v-close-popup label="Close" color="primary" flat />
+                  </div>
+                </q-date>
+              </q-popup-proxy>
+            </q-icon>
+          </template>
+        </q-input>
+
         <q-input
           outlined
           dense
           debounce="300"
           v-model="filter"
           placeholder="Search"
+          class=" q-mx-sm"
         >
           <q-icon slot="append" name="search" />
         </q-input>
 
         <q-btn
-          flat
           dense
+          unelevated
           color="primary"
           icon-right="archive"
           label="Export"
-          class="q-pa-xs q-ml-sm"
+          class="q-pa-xs"
           @click="csvExport"
         />
       </template>
@@ -52,6 +71,7 @@ export default {
 
   data() {
     return {
+      date: "",
       filter: "",
       pagination: {
         rowsPerPage: 0
@@ -231,19 +251,38 @@ export default {
   },
 
   methods: {
+    setPrevDate() {
+      let prevDate = date.subtractFromDate(new Date(), { days: 1 });
+      let format = date.formatDate(prevDate, "YYYY/MM/DD");
+
+      this.date = format;
+    },
     csvExport() {
-      let timestamp = date.formatDate(new Date(), "MMDDYY-HHMMSS");
+      let timestamp = this.date; //date.formatDate(new Date(), "MMDDYY-HHMMSS");
       let data = this.$refs.table.filteredSortedRows.map(el => {
-        el["Date"] = date.formatDate(el.Date, "MM/DD/YYYY HH:mm:ss");
-        el["Call DateTime"] = date.formatDate(el.Date, "MM/DD/YYYY HH:mm:ss");
-        el["MIN Date Opened"] = date.formatDate(el.Date, "MM/DD/YYYY HH:mm:ss");
-        el["FT Date Opened"] = date.formatDate(el.Date, "MM/DD/YYYY HH:mm:ss");
+        el["Date"] = date.formatDate(el["Date"], "MM/DD/YYYY HH:mm:ss");
+        el["Call DateTime"] = date.formatDate(
+          el["Call DateTime"],
+          "MM/DD/YYYY HH:mm:ss"
+        );
+        el["MIN Date Opened"] = date.formatDate(
+          el["MIN Date Opened"],
+          "MM/DD/YYYY HH:mm:ss"
+        );
+        el["FT Date Opened"] = date.formatDate(
+          el["FT Date Opened"],
+          "MM/DD/YYYY HH:mm:ss"
+        );
 
         return el;
       });
 
       exportFile(`FT ESA Report ${timestamp}.csv`, unparse(data));
     }
+  },
+
+  mounted() {
+    this.setPrevDate();
   }
 };
 </script>

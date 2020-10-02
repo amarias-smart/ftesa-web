@@ -1,21 +1,27 @@
 <template>
   <q-page padding>
-    <div class="row justify-center q-col-gutter-sm">
-      <div class="col-12 col-md-4">
-        <q-card class="bg_dull_2left">
+    <div class="row justify-center q-col-gutter-sm items-stretch">
+      <div class="col-12 col-md-3">
+        <q-card class="bg_dull_2left fit flex flex-center">
           <CHART :dataList="minWithOpenFT" title="MIN With Open FT:" />
         </q-card>
       </div>
 
-      <div class="col-12 col-md-4">
-        <q-card class="bg_dull_2mid">
+      <div class="col-12 col-md-3">
+        <q-card class="bg_dull_2mid fit flex flex-center">
           <CHART :dataList="ftWithOpenFT" title="FT With Open FT:" />
         </q-card>
       </div>
 
-      <div class="col-12 col-md-4">
-        <q-card class="bg_dull_2right">
+      <div class="col-12 col-md-3">
+        <q-card class="bg_dull_2mid fit flex flex-center">
           <CHART :dataList="ftReviews" title="FT Reviews:" />
+        </q-card>
+      </div>
+
+      <div class="col-12 col-md-3">
+        <q-card>
+          <q-date v-model="dateFilter" class="bg_dull_2right fit" minimal />
         </q-card>
       </div>
 
@@ -36,6 +42,7 @@ export default {
 
   data() {
     return {
+      dateFilter: "",
       dataList: []
     };
   },
